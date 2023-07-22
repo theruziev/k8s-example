@@ -11,6 +11,21 @@ image:
   tag: "latest"
   port: 8080
 
+canary:
+  replicaCount: 0
+  image:
+    repository: "bakhtiyor/k8s-example"
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "canary"
+    port: 8080
+  resources:
+    limits:
+      cpu: 10m
+      memory: 128Mi
+    requests:
+      cpu: 10m
+      memory: 128Mi
 
 podAnnotations:
   name: k8s-app
@@ -28,5 +43,3 @@ resources:
     cpu: 10m
     memory: 128Mi
 
-
-nodeSelector: { }
